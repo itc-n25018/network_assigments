@@ -1,0 +1,44 @@
+ICMP Echo Request パケット解析
+
+Ethernet II
+ Destination MAC: 52:54:00:e0:08:61
+ Source MAC: 52:54:00:41:a6:17
+ Type: IPv4 (0x0800)
+
+IPv4 Header
+ Version: 4
+ Header Length: 20 bytes
+ Protocol: ICMP (1)
+ Source IP: 192.168.122.122
+ Destination IP: 8.8.8.8
+ TTL: 64
+
+ICMP Header
+ Type: 8 (Echo Request)
+ Code: 0
+ Identifier: 0x1234
+ Sequence Number: 1
+ 
+ ARP要求
+Hardware type 	00 01 		  ethernet
+Protocal type 	08 00 		  IPv4
+Hardware size 	06    		  MACアドレス長(6バイト)
+Protocal size 	04    		  IPアドレス長
+Opcode        	00 01 		  ARP要求
+Sender MAC    	52 54 00 41 a6 17 送信元MACアドレス
+Sender IP     	c0 a8 7a 7a 	  送信元IPアドレス
+TargetMAC	00 00 00 00 00 00 宛先MAC
+Taeget IP	c0 a8 7a 01	  宛先IPアドレス
+
+ARP要求（192.168.122.1? Tell 192.168.122.122）
+
+ARP応答
+Hardware type		16bit	ネットワーク種類			00 01（Ethernet）
+Protocol type		16bit	上位プロトコル種類			08 00（IPv4）
+Hardware size		8bit	MACアドレスの長さ			06
+Protocol size		8bit	IPアドレスの長さ			04
+Opcode			16bit	操作の種類（1=Request、2=Reply）	00 02（応答）
+Sender MAC address	48bit	応答する側（宛先IPを持つPC）のMAC	52 54 00 e0 08 61
+Sender IP address	32bit	応答する側のIPアドレス			c0 a8 7a 01（192.168.122.1）
+Target MAC address	48bit	要求を送った側のMACアドレス		52 54 00 41 a6 17
+Target IP address	32bit	要求を送った側のIPアドレス		c0 a8 7a 7a（192.168.122.122）
